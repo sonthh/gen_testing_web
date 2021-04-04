@@ -3,10 +3,12 @@ import { Layout, Menu } from 'antd';
 import { useState } from 'react';
 import { menu } from '../../constants/menu';
 import { routes } from '../../constants/router';
-import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
+import { PrivateRoute } from '../privateRoute';
 import { Redirect, Switch } from 'react-router';
+import { PageHeader } from '../header';
+import { Link } from 'react-router-dom';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const routesComponent = routes.map((e, index) => {
   return (
@@ -19,7 +21,7 @@ const routesComponent = routes.map((e, index) => {
   );
 });
 
-export const MainPage = (props: any) => {
+export const PageLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const onCollapse = (collapsed: boolean) => {
@@ -27,7 +29,9 @@ export const MainPage = (props: any) => {
   };
 
   const menuComponent = menu.map((e, index) => (
-    <Menu.Item key={index}>{e.text}</Menu.Item>
+    <Menu.Item key={index}>
+      <Link to={e.path}>{e.text}</Link>
+    </Menu.Item>
   ));
 
   return (
@@ -37,12 +41,12 @@ export const MainPage = (props: any) => {
         <Menu theme='dark' defaultSelectedKeys={['1']} mode='inline'>{menuComponent}</Menu>
       </Sider>
       <Layout className='site-layout'>
-        <Header className='site-layout-background' style={{ padding: 0 }} />
-        <Content style={{ margin: '0 16px' }}>
+        <PageHeader />
+        <Content style={{ margin: '15px 16px' }}>
           <div className='site-layout-background' style={{ padding: 24, marginTop: 16, minHeight: 700 }}>
             <Switch>
               {routesComponent}
-              <Redirect from='*' to='/error/404' />
+              <Redirect from='*' to='/import_file' />
             </Switch>
           </div>
         </Content>

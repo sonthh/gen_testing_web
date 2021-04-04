@@ -5,7 +5,7 @@ import thunk from 'redux-thunk'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { MainPage } from './shared/components/layout/MainPage';
+import { PageLayout } from './shared/components/layout';
 import { rootReducer } from './store/root.reducer';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <MainPage />
+      <PageLayout />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

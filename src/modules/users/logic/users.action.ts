@@ -1,4 +1,4 @@
-import { FindManyUsers } from '../types/users.interface';
+import { FindManyUsers } from './users.interface';
 import { FIND_MANY_USERS_FAILURE, FIND_MANY_USERS_REQUEST, FIND_MANY_USERS_SUCCESS } from './users.type';
 import * as usersService from './users.service';
 

@@ -6,6 +6,6 @@ export const menu = [
   },
   {
     text: 'Doctor',
-    path: '/doctors'
+    path: '/import_file'
   }
 ]
