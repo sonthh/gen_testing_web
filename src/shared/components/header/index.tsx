@@ -1,12 +1,20 @@
 import { Col, Dropdown, Layout, Menu, Row } from 'antd';
 import Avatar from 'antd/lib/avatar/avatar';
 import { LogoutOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router';
 const { Header } = Layout;
 
 export const PageHeader = () => {
+  const history = useHistory();
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    history.push('/auth/login');
+  }
+
   const userMenu = (
     <Menu className='menu-avatar'>
-      <Menu.Item>
+      <Menu.Item onClick={handleLogout}>
         <LogoutOutlined />
         <span>Đăng xuất</span>
       </Menu.Item>

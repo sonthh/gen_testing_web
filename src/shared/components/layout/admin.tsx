@@ -21,7 +21,7 @@ const routesComponent = routes.map((e, index) => {
   );
 });
 
-export const PageLayout = () => {
+export const PageLayout = (props: any) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const onCollapse = (collapsed: boolean) => {

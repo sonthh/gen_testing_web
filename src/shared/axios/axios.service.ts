@@ -1,10 +1,8 @@
 import axios from 'axios';
 
 axios.interceptors.request.use(config => {
-  // const { token } = getCurrentUser();
-  const token = 'token';
+  const token = localStorage.getItem('accessToken');
   config.headers['Authorization'] = `Bearer ${token}`;
-  
   return config;
 }, error => {
   console.log(error);

@@ -1,0 +1,23 @@
+import { FIND_MANY_USERS_FAILURE, FIND_MANY_USERS_REQUEST, FIND_MANY_USERS_SUCCESS } from './actionTypes';
+import axios from '../../shared/axios/axios.service';
+
+export const findManyUsers = (params: any) => {
+  return async (dispatch: any) => {
+    dispatch({
+      type: FIND_MANY_USERS_REQUEST,
+    });
+    try {
+      const { data } = await axios
+        .get('https://jsonplaceholder.typicode.com/users', { params });
+      dispatch({
+        type: FIND_MANY_USERS_SUCCESS,
+        payload: { data }
+      })
+    } catch (error) {
+      dispatch({
+        type: FIND_MANY_USERS_FAILURE,
+        payload: { error }
+      })
+    }
+  }
+}

@@ -1,15 +1,21 @@
-import { ImportFile } from "../../modules/genTesting/pages/importFile";
-import { UserList } from "../../modules/users/pages/userList";
+import { GenTestingInput } from '../../modules/genTestingInput';
+import { UserCreate } from '../../modules/usersCreate';
+import { UserList } from '../../modules/usersList';
 
 export const routes = [
   {
-    path: '/users',
+    path: '/admin/users',
     component: UserList,
     exact: true,
   },
   {
-    path: '/import_file',
-    component: ImportFile,
+    path: '/admin/users/create',
+    component: UserCreate,
+    exact: true,
+  },
+  {
+    path: '/admin/gen_testing/input',
+    component: GenTestingInput,
     exact: true,
   }
 ];

@@ -1,11 +1,11 @@
 
 export const menu = [
   {
-    text: 'User',
-    path: '/users'
+    text: 'Bệnh nhân',
+    path: '/admin/users'
   },
   {
-    text: 'Doctor',
-    path: '/import_file'
+    text: 'Thử nghiệm gen',
+    path: '/admin/gen_testing/input'
   }
 ]

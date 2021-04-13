@@ -1,13 +1,11 @@
-import { ReduxAction } from "../../../shared/types/schared.interface";
-import { UsersState } from "./users.interface";
-import { FIND_MANY_USERS_FAILURE, FIND_MANY_USERS_REQUEST, FIND_MANY_USERS_SUCCESS } from "./users.type";
+import { FIND_MANY_USERS_FAILURE, FIND_MANY_USERS_REQUEST, FIND_MANY_USERS_SUCCESS } from './actionTypes';
 
-const initialState: UsersState = {
+const initialState = {
   isLoading: false,
-  users: []
+  data: []
 }
 
-export const usersReducer = (state = initialState, { type, payload }: ReduxAction): UsersState => {
+export const userListReducer = (state = initialState, { type, payload }: any) => {
   switch (type) {
     case FIND_MANY_USERS_REQUEST: {
       return {
@@ -18,7 +16,7 @@ export const usersReducer = (state = initialState, { type, payload }: ReduxActio
     case FIND_MANY_USERS_SUCCESS: {
       return {
         ...state,
-        users: payload.data,
+        data: payload.data,
         isLoading: false
       }
     }
