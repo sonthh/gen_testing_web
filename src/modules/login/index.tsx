@@ -1,6 +1,5 @@
-import { Breadcrumb, Space, Divider, Row, Col, notification, Form, Input, Button, Checkbox } from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { Link, useHistory } from 'react-router-dom';
+import { Row, Col, Form, Input, Button } from 'antd';
+import { useHistory } from 'react-router-dom';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from './action';
@@ -28,7 +27,7 @@ export const LoginPage = (props: any) => {
           name='normal_login'
           className='login-form'
           onFinish={onFinish}
-          initialValues={{ username: 'sontran', password: '123456'}}
+          initialValues={{ username: 'hoanghuy', password: '123456'}}
         >
           <Form.Item
             name='username'

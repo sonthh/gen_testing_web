@@ -6,6 +6,6 @@ export const menu = [
   },
   {
     text: 'Thử nghiệm gen',
-    path: '/admin/gen_testing/input'
+    path: '/admin/gen_testing'
   }
 ]

@@ -12,8 +12,6 @@ export const findManyUsers = (params: any) => {
         .get(`${apiUrl}/users`, {
           params
         });
-      console.log(data.list);
-        
       dispatch({
         type: FIND_MANY_USERS_SUCCESS,
         payload: { data: data.list }
