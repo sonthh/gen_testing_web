@@ -16,7 +16,7 @@ export const doctorMenu = [
 export const patientMenu = [
   {
     text: 'Xem kết quả',
-    path: '/my_results'
+    path: '/my_testing_results'
   },
 ]
 

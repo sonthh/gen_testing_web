@@ -7,8 +7,8 @@ import { createUserAction } from './action';
 export const UserCreate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const data = useSelector((state: any) => state.userList.data);
-  const isLoading = useSelector((state: any) => state.userList.isLoading);
+  const data = useSelector((state: any) => state.userCreate.data);
+  const isLoading = useSelector((state: any) => state.userCreate.isLoading);
 
   useEffect(() => {
     onInit();

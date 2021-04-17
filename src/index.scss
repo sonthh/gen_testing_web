@@ -25,3 +25,14 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
+
+.myTestingResults {
+  margin-top: 70px;
+  background-color: #f2f7fb;
+  padding: 19px;
+  border-radius: 7px;
+
+  >.ant-col >.ant-row {
+    margin-bottom: 20px;
+  }
+}
