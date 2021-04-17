@@ -25,7 +25,7 @@ export const PageHeader = () => {
     <Header className='site-layout-background' style={{ paddingRight: 15 }}>
       <Row justify='space-between'>
         <Col>
-            <div className='page-title'>Hệ thống kết quả xét nghiệm</div>
+            <div className='page-title'>Quản lý kết quả xét nghiệm</div>
         </Col>
         <Col>
           <Dropdown trigger={['click']} overlay={userMenu} placement="bottomRight">
