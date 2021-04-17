@@ -1,8 +1,10 @@
-import { Breadcrumb, Button, Col, Row, Table } from 'antd';
+import { Breadcrumb, Button, Col, Row, Table, Space, Tag, Input } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as usersAction from './action';
+import { userRole, userStatus } from '../../shared/constants';
+import { findManyUsers } from './action';
+import { PlusOutlined } from '@ant-design/icons';
 
 export const UserList = () => {
   const dispatch = useDispatch();
@@ -14,21 +16,60 @@ export const UserList = () => {
   }, []);
 
   const onInit = () => {
-    dispatch(usersAction.findManyUsers({}));
+    dispatch(findManyUsers({}));
   }
 
   const columns = [
     {
-      title: 'Tên bệnh nhân',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: 'Username',
+      title: 'Tên người dùng',
       dataIndex: 'username',
       key: 'username',
     },
+    {
+      title: 'Họ tên',
+      dataIndex: 'fullname',
+      key: 'fullname',
+    },
+    {
+      title: 'Số điện thoại',
+      dataIndex: 'phoneNumber',
+      key: 'phoneNumber',
+    },
+    {
+      title: 'Trạng thái',
+      dataIndex: 'status',
+      key: 'status',
+      render: (text: string, record: any, index: any): any => {
+        const status = userStatus[text];
+        return <div>{status}</div>
+      }
+    },
+    {
+      title: 'Vài trò',
+      dataIndex: 'role',
+      key: 'role',
+      render: (text: string, record: any, index: any): any => {
+        const role = userRole[text];
+        return <div>{role}</div>
+      }
+    },
+    {
+      title: 'Hành động',
+      dataIndex: 'action',
+      key: 'action',
+      render: (text: string, record: any, index: any): any => {
+        return (
+          <Link to={`/admin/users/${record._id}/update`}>
+            Sửa
+          </Link>
+        );
+      }
+    },
   ];
+
+  const handleFilterRole = (role: string) => {
+    dispatch(findManyUsers({ role }));
+  }
 
   return (
     <>
@@ -40,11 +81,29 @@ export const UserList = () => {
           <Link to={'/'}>Người dùng</Link>
         </Breadcrumb.Item>
       </Breadcrumb>
-      <Row>
-        <Col>
+      <Row style={{ marginBottom: 20 }} justify='space-between'>
+        <Col span={8}>
           <Link to='/admin/users/create'>
-            <Button type='primary'>Thêm nguời dùng</Button>
+            <Button  icon={<PlusOutlined />} type='primary'>Thêm mới</Button>
           </Link>
+        </Col>
+        <Col span={4}>
+          <Input 
+          onPressEnter={(e: any) => {
+            let fullname = e.target.value;
+            if (!fullname || !fullname.length) {
+              fullname = null;
+            }
+            dispatch(findManyUsers({ fullname }));
+          }} 
+          placeholder='Tìm theo tên' />
+        </Col>
+        <Col span={8}>
+          <Space>
+            <Tag className='roleTag' color="magenta" onClick={() => handleFilterRole('DOCTOR')}>Bác sĩ</Tag>
+            <Tag className='roleTag' color="red" onClick={() => handleFilterRole('PATIENT')}>Bệnh nhân</Tag>
+            <Tag className='roleTag' color="volcano" onClick={() => handleFilterRole('ADMIN')}>Quản trị</Tag>
+          </Space>
         </Col>
       </Row>
       <Table loading={isLoading} columns={columns} dataSource={data} />

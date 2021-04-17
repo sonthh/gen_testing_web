@@ -1,6 +1,7 @@
 import { GenTestingInput } from '../../modules/genTestingInput';
 import { UserCreate } from '../../modules/usersCreate';
 import { UserList } from '../../modules/usersList';
+import { UserUpdate } from '../../modules/usersUpdate';
 
 export const routes = [
   {
@@ -11,6 +12,11 @@ export const routes = [
   {
     path: '/admin/users/create',
     component: UserCreate,
+    exact: true,
+  },
+  {
+    path: '/admin/users/:id/update',
+    component: UserUpdate,
     exact: true,
   },
   {

@@ -1,7 +1,7 @@
 
 export const menu = [
   {
-    text: 'Bệnh nhân',
+    text: 'Người dùng',
     path: '/admin/users'
   },
   {
