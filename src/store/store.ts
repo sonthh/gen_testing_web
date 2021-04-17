@@ -6,6 +6,7 @@ import { userCreateReducer } from '../modules/usersCreate/reducer';
 import { userUpdateReducer } from '../modules/usersUpdate/reducer';
 import { genTestingListReducer } from '../modules/genTestingList/reducer';
 import { myTestingResultsReducer } from '../modules/myTestingResults/reducer';
+import { genTestingCreateReducer } from '../modules/genTesting/reducer';
 
 export const rootReducer = combineReducers({
   userList: userListReducer,
@@ -15,4 +16,5 @@ export const rootReducer = combineReducers({
   userUpdate: userUpdateReducer,
   genTestingList: genTestingListReducer,
   myTestingResults: myTestingResultsReducer,
+  gentTestingCreate: genTestingCreateReducer,
 });

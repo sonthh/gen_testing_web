@@ -1,3 +1,4 @@
+import { GenTestingCreate } from '../../modules/genTesting';
 import { GenTestingInput } from '../../modules/genTestingInput';
 import { GenTestingList } from '../../modules/genTestingList';
 import { MyTestingResults } from '../../modules/myTestingResults';
@@ -27,13 +28,18 @@ export const routes = [
     exact: true,
   },
   {
-    path: '/gen_testing',
+    path: '/gen_testing_results',
     component: GenTestingList,
     exact: true,
   },
   {
     path: '/my_testing_results',
     component: MyTestingResults,
+    exact: true,
+  },
+  {
+    path: '/gen_testing/create',
+    component: GenTestingCreate,
     exact: true,
   },
 ];

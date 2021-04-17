@@ -8,6 +8,10 @@ export const adminMenu = [
 
 export const doctorMenu = [
   {
+    text: 'Kết quả thử nghiệm gen',
+    path: '/gen_testing_results'
+  },
+  {
     text: 'Thử nghiệm gen',
     path: '/gen_testing'
   }
