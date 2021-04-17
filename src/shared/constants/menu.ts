@@ -2,10 +2,10 @@
 export const menu = [
   {
     text: 'Người dùng',
-    path: '/admin/users'
+    path: '/users'
   },
   {
     text: 'Thử nghiệm gen',
-    path: '/admin/gen_testing'
+    path: '/gen_testing'
   }
 ]

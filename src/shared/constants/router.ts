@@ -6,27 +6,27 @@ import { UserUpdate } from '../../modules/usersUpdate';
 
 export const routes = [
   {
-    path: '/admin/users',
+    path: '/users',
     component: UserList,
     exact: true,
   },
   {
-    path: '/admin/users/create',
+    path: '/users/create',
     component: UserCreate,
     exact: true,
   },
   {
-    path: '/admin/users/:id/update',
+    path: '/users/:id/update',
     component: UserUpdate,
     exact: true,
   },
   {
-    path: '/admin/gen_testing/input',
+    path: '/gen_testing/input',
     component: GenTestingInput,
     exact: true,
   },
   {
-    path: '/admin/gen_testing',
+    path: '/gen_testing',
     component: GenTestingList,
     exact: true,
   },

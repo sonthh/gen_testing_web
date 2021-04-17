@@ -15,7 +15,7 @@ export const createUserAction = (payload: any) => {
         type: CREATE_USER_SUCCESS,
         payload: { data }
       })
-      payload.history.push('/admin/users');
+      payload.history.push('/users');
     } catch (error) {
       dispatch({
         type: CREATE_USER_FAILURE,

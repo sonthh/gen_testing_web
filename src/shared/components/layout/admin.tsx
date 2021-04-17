@@ -1,4 +1,3 @@
-import './index.scss';
 import { Layout, Menu } from 'antd';
 import { useState } from 'react';
 import { menu } from '../../constants/menu';

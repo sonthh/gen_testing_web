@@ -31,9 +31,7 @@ export const GenTestingInput = () => {
         <Breadcrumb.Item>
           <Link to={'/'}>Trang chủ</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <Link to={'/admin/users'}>Bệnh nhân</Link>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item>Nhập dữ liệu kiểm thử gen</Breadcrumb.Item>
       </Breadcrumb>
       <Form layout='vertical' name='dynamic_form_nest_item' onFinish={onFinish} autoComplete='off'>
         <Form.List name='results'>

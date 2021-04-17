@@ -1,4 +1,4 @@
-import { Breadcrumb, Button, Col, Row, Table, Space, Tag, Input } from 'antd';
+import { Breadcrumb, Button, Col, Row, Table } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -11,10 +11,8 @@ const summaryGenTestingRecord = (record: any) => {
   const gens = record?.gens;
   const recommends = record?.recommends;
   const results = record?.results;
-  const summary = `Có ${gens?.length || 0} gens, ${recommends?.length || 0} khuyến nghị và ${results.length} kết quả`;
-  return (
-    <div>{summary}</div>
-  );
+  const summary = `Có ${gens?.length || 0} gens, ${recommends?.length || 0} khuyến nghị và ${results.length || 0} kết quả`;
+  return (<div>{summary}</div>);
 };
 
 export const GenTestingList = () => {
@@ -58,10 +56,8 @@ export const GenTestingList = () => {
       key: 'action',
       render: (text: string, record: any, index: any): any => {
         return (
-          <Button type='primary' danger icon={<DeleteOutlined />} 
-            onClick={() => {
-              deleteGenTestings(record._id);
-            }}
+          <Button type='primary' danger icon={<DeleteOutlined />}
+            onClick={() => dispatch(deleteGenTestings(record._id))}
           />
         );
       }
@@ -72,20 +68,18 @@ export const GenTestingList = () => {
     <>
       <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>
-          <Link to={'/'}>Trang chủ</Link>
+          <Link to={'/gen_testing'}>Trang chủ</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <Link to={'/admin/gen_testing'}>Thử nghiệm gen</Link>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item>Thử nghiệm gen</Breadcrumb.Item>
       </Breadcrumb>
       <Row style={{ marginBottom: 20 }} justify='space-between'>
         <Col span={8}>
-          <Link to='/admin/gen_testing/input'>
+          <Link to='/gen_testing/input'>
             <Button icon={<PlusOutlined />} type='primary'>Thêm mới</Button>
           </Link>
         </Col>
       </Row>
-      <Table loading={isLoading} columns={columns} dataSource={data} />
+      <Table loading={isLoading} columns={columns} dataSource={data} pagination={false} />
     </>
   );
 };

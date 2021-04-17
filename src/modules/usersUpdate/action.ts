@@ -14,7 +14,7 @@ export const updateUserAction = (payload: any) => {
         type: UPDATE_USER_SUCCESS,
         payload: { data }
       });
-      payload.history.push('/admin/users');
+      payload.history.push('/users');
       notification.open({
         message: 'Thông báo',
         description: 'Chỉnh sửa thành công',

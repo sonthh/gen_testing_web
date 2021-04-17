@@ -16,7 +16,7 @@ export const loginAction = (payload: any) => {
         payload: { data }
       });
       localStorage.setItem('accessToken', data.accessToken);
-      payload.history.push('/admin/gen_testing');
+      payload.history.push('/gen_testing');
     } catch (error) {
       dispatch({
         type: LOGIN_FAILURE,

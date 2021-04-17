@@ -23,7 +23,10 @@ export const PageHeader = () => {
 
   return (
     <Header className='site-layout-background' style={{ paddingRight: 15 }}>
-      <Row justify='end'>
+      <Row justify='space-between'>
+        <Col>
+            <div className='page-title'>Hệ thống kết quả xét nghiệm</div>
+        </Col>
         <Col>
           <Dropdown trigger={['click']} overlay={userMenu} placement="bottomRight">
               <Avatar size='large' src='https://banner2.cleanpng.com/20180530/qct/kisspng-cristiano-ronaldo-computer-icons-avatar-portugal-n-5b0ec49b5d50f9.2926556215276944913822.jpg' />

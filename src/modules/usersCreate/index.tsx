@@ -28,14 +28,12 @@ export const UserCreate = () => {
     <>
       <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>
-          <Link to={'/'}>Trang chủ</Link>
+          <Link to={'/gen_testing'}>Trang chủ</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link to={'/'}>Người dùng</Link>
+          <Link to={'/users'}>Người dùng</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <Link to={'/'}>Thêm nguời dùng</Link>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item>Thêm nguời dùng</Breadcrumb.Item>
       </Breadcrumb>
       <Form
         name='normal_login'

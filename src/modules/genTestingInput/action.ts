@@ -14,7 +14,7 @@ export const genTestingInput = (payload: any) => {
         type: GEN_TESTING_INPUT_SUCCESS,
         payload: { data }
       });
-      payload.history.push('/admin/users');
+      payload.history.push('/gen_testing');
     } catch (error) {
       dispatch({
         type: GEN_TESTING_INPUT_FAILURE,

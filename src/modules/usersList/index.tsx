@@ -59,7 +59,7 @@ export const UserList = () => {
       key: 'action',
       render: (text: string, record: any, index: any): any => {
         return (
-          <Link to={`/admin/users/${record._id}/update`}>
+          <Link to={`/users/${record._id}/update`}>
             Sửa
           </Link>
         );
@@ -75,15 +75,13 @@ export const UserList = () => {
     <>
       <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>
-          <Link to={'/'}>Trang chủ</Link>
+          <Link to={'/gen_testing'}>Trang chủ</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <Link to={'/'}>Người dùng</Link>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item>Người dùng</Breadcrumb.Item>
       </Breadcrumb>
       <Row style={{ marginBottom: 20 }} justify='space-between'>
         <Col span={8}>
-          <Link to='/admin/users/create'>
+          <Link to='/users/create'>
             <Button  icon={<PlusOutlined />} type='primary'>Thêm mới</Button>
           </Link>
         </Col>
@@ -106,7 +104,7 @@ export const UserList = () => {
           </Space>
         </Col>
       </Row>
-      <Table loading={isLoading} columns={columns} dataSource={data} />
+      <Table loading={isLoading} columns={columns} dataSource={data} pagination={false} />
     </>
   );
 };
