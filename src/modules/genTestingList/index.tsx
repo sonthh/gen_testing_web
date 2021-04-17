@@ -2,9 +2,10 @@ import { Breadcrumb, Button, Col, Row, Table, Space, Tag, Input } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { findManyGenTestings } from './action';
+import { deleteGenTestings, findManyGenTestings } from './action';
 import { PlusOutlined } from '@ant-design/icons';
 import moment from 'moment';
+import { DeleteOutlined } from '@ant-design/icons';
 
 const summaryGenTestingRecord = (record: any) => {
   const gens = record?.gens;
@@ -57,17 +58,15 @@ export const GenTestingList = () => {
       key: 'action',
       render: (text: string, record: any, index: any): any => {
         return (
-          <Link to={`/admin/users/${record._id}/update`}>
-            Sửa
-          </Link>
+          <Button type='primary' danger icon={<DeleteOutlined />} 
+            onClick={() => {
+              deleteGenTestings(record._id);
+            }}
+          />
         );
       }
     },
   ];
-
-  // const handleFilterRole = (role: string) => {
-  //   dispatch(findManyGenTestings({ role }));
-  // }
 
   return (
     <>
