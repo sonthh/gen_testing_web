@@ -27,7 +27,7 @@ export const LoginPage = (props: any) => {
           name='normal_login'
           className='login-form'
           onFinish={onFinish}
-          initialValues={{ username: 'hoanghuy', password: '123456'}}
+          initialValues={{ username: 'patient', password: '123456'}}
         >
           <Form.Item
             name='username'

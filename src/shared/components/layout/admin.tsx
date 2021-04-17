@@ -27,7 +27,9 @@ export const PageLayout = (props: any) => {
     setCollapsed(collapsed);
   };
 
-  const menuComponent = menu.map((e, index) => (
+  const role = localStorage.getItem('role') || 'PATIENT';
+  const appMenu = menu[role];
+  const menuComponent = appMenu.map((e, index) => (
     <Menu.Item key={index}>
       <Link to={e.path}>{e.text}</Link>
     </Menu.Item>

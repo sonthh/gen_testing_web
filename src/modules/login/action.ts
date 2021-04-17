@@ -14,8 +14,11 @@ export const loginAction = (payload: any) => {
       dispatch({
         type: LOGIN_SUCCESS,
         payload: { data }
-      });
+      });      
+
       localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('role', data.role);
+
       payload.history.push('/gen_testing');
     } catch (error) {
       dispatch({
