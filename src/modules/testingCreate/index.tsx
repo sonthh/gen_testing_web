@@ -1,16 +1,16 @@
 import { Breadcrumb, Form, Input, Button, Select } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { findManyUsers } from '../usersList/action';
-import { createGenTesingAction } from './action';
+import { createTestingAction } from './action';
 const { Option } = Select;
 
 export const GenTestingCreate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const data = useSelector((state: any) => state.gentTestingCreate.data);
-  const isLoading = useSelector((state: any) => state.gentTestingCreate.isLoading);
+  const isLoading = useSelector((state: any) => state.testingCreate.isLoading);
   const paitients = useSelector((state: any) => state.userList.data);
 
   const paitientOptions = paitients?.map((e: any) => (
@@ -28,7 +28,7 @@ export const GenTestingCreate = () => {
   }
 
   const onFinish = (values: any) => {
-    dispatch(createGenTesingAction({
+    dispatch(createTestingAction({
       model: values,
       history,
     }));

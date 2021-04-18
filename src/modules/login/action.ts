@@ -14,7 +14,7 @@ export const loginAction = (payload: any) => {
       dispatch({
         type: LOGIN_SUCCESS,
         payload: { data }
-      });      
+      });
 
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('role', data.role);

@@ -27,10 +27,18 @@
 }
 
 .myTestingResults {
-  margin-top: 70px;
+  margin-top: 30px;
   background-color: #f2f7fb;
   padding: 19px;
   border-radius: 7px;
+
+  >.ant-col >.ant-row {
+    margin-bottom: 20px;
+  }
+}
+
+.result_detail {
+  margin-top: 20px;
 
   >.ant-col >.ant-row {
     margin-bottom: 20px;

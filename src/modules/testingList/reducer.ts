@@ -1,26 +1,26 @@
-import { CREATE_GEN_TESING_FAILURE, CREATE_GEN_TESING_REQUEST, CREATE_GEN_TESING_SUCCESS } from './actionTypes';
+import { FIND_MANY_GEN_TESTING_FAILURE, FIND_MANY_GEN_TESTING_REQUEST, FIND_MANY_GEN_TESTING_SUCCESS } from "./actionTypes"
 
 const initialState = {
   isLoading: false,
-  data: {}
+  data: [],
 }
 
-export const genTestingCreateReducer = (state = initialState, { type, payload }: any) => {
+export const testingListReducer = (state = initialState, { type, payload }: any) => {
   switch (type) {
-    case CREATE_GEN_TESING_REQUEST: {
+    case FIND_MANY_GEN_TESTING_REQUEST: {
       return {
         ...state,
         isLoading: true,
       }
     }
-    case CREATE_GEN_TESING_SUCCESS: {
+    case FIND_MANY_GEN_TESTING_SUCCESS: {
       return {
         ...state,
         data: payload.data,
         isLoading: false
       }
     }
-    case CREATE_GEN_TESING_FAILURE: {
+    case FIND_MANY_GEN_TESTING_FAILURE: {
       return {
         ...state,
         isLoading: false

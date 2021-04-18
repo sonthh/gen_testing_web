@@ -13,7 +13,7 @@ export const genTestingListReducer = (state = initialState, { type, payload }: a
         isLoading: true,
       }
     }
-    case FIND_MANY_GEN_TESTINGS_SUCCESS: {      
+    case FIND_MANY_GEN_TESTINGS_SUCCESS: {
       return {
         ...state,
         data: payload.data,
@@ -26,7 +26,7 @@ export const genTestingListReducer = (state = initialState, { type, payload }: a
         isLoading: false
       }
     }
-    case DELETE_GEN_TESTINGS_SUCCESS: {      
+    case DELETE_GEN_TESTINGS_SUCCESS: {
       return {
         ...state
       }

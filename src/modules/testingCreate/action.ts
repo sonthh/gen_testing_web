@@ -1,24 +1,24 @@
-import { CREATE_GEN_TESING_FAILURE, CREATE_GEN_TESING_REQUEST, CREATE_GEN_TESING_SUCCESS } from './actionTypes';
+import { CREATE_GEN_TESTING_FAILURE, CREATE_GEN_TESTING_REQUEST, CREATE_GEN_TESTING_SUCCESS } from './actionTypes';
 import axios from '../../shared/axios/axios.service';
 import { apiUrl } from '../config/config.service';
 import { notification } from 'antd';
 
-export const createGenTesingAction = (payload: any) => {
+export const createTestingAction = (payload: any) => {
   return async (dispatch: any) => {
     dispatch({
-      type: CREATE_GEN_TESING_REQUEST,
+      type: CREATE_GEN_TESTING_REQUEST,
     });
     try {
       const { data } = await axios
         .post(`${apiUrl}/testings`, payload.model);
       dispatch({
-        type: CREATE_GEN_TESING_SUCCESS,
+        type: CREATE_GEN_TESTING_SUCCESS,
         payload: { data }
       })
       payload.history.push('/gen_testing');
     } catch (error) {
       dispatch({
-        type: CREATE_GEN_TESING_FAILURE,
+        type: CREATE_GEN_TESTING_FAILURE,
         payload: { error }
       });
       notification.open({
