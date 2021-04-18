@@ -24,7 +24,7 @@ export const routes = [
     exact: true,
   },
   {
-    path: '/gen_testing/:id/gen_testing_result/input',
+    path: '/gen_testing/:id/results/input',
     component: GenTestingInput,
     exact: true,
   },

@@ -93,7 +93,7 @@ export const GenTestingList = () => {
       </Breadcrumb>
       <Row style={{ marginBottom: 20 }} justify='space-between'>
         <Col span={8}>
-          <Link to='/gen_testing_result/input'>
+          <Link to={`/gen_testing/${params.id}/results/input`}>
             <Button icon={<PlusOutlined />} type='primary'>Thêm mới</Button>
           </Link>
         </Col>

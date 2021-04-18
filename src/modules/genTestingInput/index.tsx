@@ -3,6 +3,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { genTestingInput } from './action';
+import TextArea from 'antd/lib/input/TextArea';
 
 export const GenTestingInput = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,20 @@ export const GenTestingInput = () => {
         <Breadcrumb.Item>Nhập dữ liệu kiểm thử gen</Breadcrumb.Item>
       </Breadcrumb>
       <Form layout='vertical' name='dynamic_form_nest_item' onFinish={onFinish} autoComplete='off'>
+        <Form.Item
+          name='name'
+          rules={[{ required: true, message: 'Vui lòng nhập tên xét nghiệm' }]}
+        >
+          <Input placeholder='Nhập tên xét nghiệm' />
+        </Form.Item>
+
+        <Form.Item
+          name='description'
+          rules={[{ required: true, message: 'Vui lòng nhập mô tả' }]}
+        >
+          <TextArea rows={5} placeholder='Nhập mô tả xét nghiệm' />
+        </Form.Item>
+
         <Form.List name='results'>
           {(fields, { add, remove }) => (
             <>

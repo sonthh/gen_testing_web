@@ -47,7 +47,7 @@ export const PageLayout = (props: any) => {
           <div className='site-layout-background' style={{ padding: 24, marginTop: 16, minHeight: 700 }}>
             <Switch>
               {routesComponent}
-              <Redirect from='*' to='/import_file' />
+              <Redirect from='*' to='/gem_testing' />
             </Switch>
           </div>
         </Content>
