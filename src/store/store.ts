@@ -8,6 +8,9 @@ import { genTestingListReducer } from '../modules/genTestingList/reducer';
 import { myTestingResultsReducer } from '../modules/myTestingResults/reducer';
 import { testingListReducer } from '../modules/testingList/reducer';
 import { testingCreateReducer } from '../modules/testingCreate/reducer';
+import { genListReducer } from '../modules/gensList/reducer';
+import { genCreateReducer } from '../modules/gensCreate/reducer';
+import { genUpdateReducer } from '../modules/gensUpdate/reducer';
 
 export const rootReducer = combineReducers({
   userList: userListReducer,
@@ -20,4 +23,7 @@ export const rootReducer = combineReducers({
   gentTestingCreate: genTestingListReducer,
   testingList: testingListReducer,
   testingCreate: testingCreateReducer,
+  genList: genListReducer,
+  genCreate: genCreateReducer,
+  genUpdate: genUpdateReducer,
 });

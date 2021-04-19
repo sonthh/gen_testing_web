@@ -1,12 +1,16 @@
 
 export const adminMenu = [
   {
-    text: 'Người dùng',
+    text: 'Quản lý người dùng',
     path: '/users'
   },
   {
-    text: 'Thử nghiệm gen',
+    text: 'Quản lý xét nghiệm',
     path: '/gen_testing'
+  },
+  {
+    text: 'Quản lý gen',
+    path: '/gens'
   }
 ]
 

@@ -6,6 +6,9 @@ import { UserCreate } from '../../modules/usersCreate';
 import { UserList } from '../../modules/usersList';
 import { UserUpdate } from '../../modules/usersUpdate';
 import { GenTestingCreate } from '../../modules/testingCreate'
+import { GenList } from '../../modules/gensList';
+import { GenCreate } from '../../modules/gensCreate';
+import { GenUpdate } from '../../modules/gensUpdate';
 
 export const routes = [
   {
@@ -47,5 +50,19 @@ export const routes = [
     path: '/gen_testing',
     component: TestingList,
     exact: true,
+  },
+  {
+    path: '/gens',
+    component: GenList,
+    exact: true,
+  },
+  {
+    path: '/gens/:id',
+    component: GenUpdate,
+  },
+  {
+    path: '/gens/create',
+    component: GenCreate,
   }
+
 ];
