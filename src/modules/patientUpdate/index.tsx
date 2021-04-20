@@ -1,25 +1,33 @@
 import { Breadcrumb, Form, Input, Button, Select } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import { createUserAction } from './action';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { findOnePatientAction, updatePatientAction } from './action';
 
-export const UserCreate = () => {
+export const PatientUpdate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const data = useSelector((state: any) => state.userCreate.data);
-  const isLoading = useSelector((state: any) => state.userCreate.isLoading);
+  const data = useSelector((state: any) => state.patientUpdate.data);
+  const isLoading = useSelector((state: any) => state.patientUpdate.isLoading);
+  const [form] = Form.useForm()
+  const params: any = useParams();
 
   useEffect(() => {
     onInit();
   }, []);
 
+  useEffect(() => {
+    form.setFieldsValue(data);
+  }, [data]);
+
   const onInit = () => {
+    dispatch(findOnePatientAction(params.id))
+    form.setFieldsValue({});
   }
 
   const onFinish = (values: any) => {
-    dispatch(createUserAction({
-      model: values,
+    dispatch(updatePatientAction({
+      model: { ...values, id: params.id, role: 'PATIENT' },
       history,
     }));
   }
@@ -31,20 +39,23 @@ export const UserCreate = () => {
           <Link to={'/gen_testing'}>Trang chủ</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link to={'/users'}>Người dùng</Link>
+          <Link to={'/users'}>Quản lý bệnh nhân</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Thêm nguời dùng</Breadcrumb.Item>
+        <Breadcrumb.Item>
+          Sửa nguời dùng
+        </Breadcrumb.Item>
       </Breadcrumb>
       <Form
         name='normal_login'
         className='login-form'
         onFinish={onFinish}
+        form={form}
       >
         <Form.Item
           name='username'
           rules={[{ required: true, message: 'Vui lòng nhập tên người dùng' }]}
         >
-          <Input placeholder='Nhập tên người dùng' />
+          <Input readOnly placeholder='Nhập tên người dùng' />
         </Form.Item>
         <Form.Item
           name='fullname'
@@ -55,22 +66,22 @@ export const UserCreate = () => {
             placeholder='Nhập họ tên'
           />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           name='email'
           rules={[{ required: true, message: 'Vui lòng nhập email' }]}
         >
           <Input
             placeholder='Nhập email'
           />
-        </Form.Item>
-        <Form.Item
+        </Form.Item> */}
+        {/* <Form.Item
           name='password'
           rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
         >
           <Input
             placeholder='Nhập mật khẩu'
           />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item
           name='phoneNumber'
           rules={[{ required: true, message: 'Vui lòng nhập số điện thoại' }]}
@@ -91,21 +102,9 @@ export const UserCreate = () => {
             placeholder='Chọn trạng thái'
           />
         </Form.Item>
-        <Form.Item
-          name='role'
-          rules={[{ required: true, message: 'Vui lòng chọn vai trò người dùng' }]}
-        >
-          <Select
-            options={[
-              { label: 'Bác sĩ', value: 'DOCTOR' },
-              { label: 'Bệnh nhân', value: 'PATIENT' },
-            ]}
-            placeholder='Chọn vai trò người dùng'
-          />
-        </Form.Item>
         <Form.Item>
           <Button loading={isLoading} type='primary' htmlType='submit' className='login-form-button'>
-            Tạo người dùng
+            Sửa bệnh nhân
           </Button>
         </Form.Item>
       </Form>

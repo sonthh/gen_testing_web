@@ -1,49 +1,27 @@
 import { Breadcrumb, Button, Form, Input, Space, Divider, Row, Col, notification } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { genTestingInput } from './action';
+import { subGenTestingCreate } from './action';
 import TextArea from 'antd/lib/input/TextArea';
-import { Checkbox } from 'antd';
-import { useEffect } from 'react';
-import { findManyGenAction } from '../gensList/action';
 
 export const GenTestingInput = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const data = useSelector((state: any) => state.genTestingInput.data);
   const isLoading = useSelector((state: any) => state.genTestingInput.isLoading);
-  const params: any = useParams()
-
-  const gens = useSelector((state: any) => state.genList.data) || [];
-
-  useEffect(() => {
-    onInit();
-  }, []);
-
-  const onInit = () => {
-    dispatch(findManyGenAction({}));
-  }
-
-  const  onChange = (checkedValues: any) => {
-    console.log('checked = ', checkedValues);
-  }
 
   const onFinish = (values: any) => {
-    // const { recommends, gens, results } = values;
-    // if (!recommends || !recommends.length || !gens || !gens.length || !results || !results.length) {
-    //   notification.open({
-    //     message: 'Thông báo',
-    //     description: 'Vui lòng nhập đầy đủ thông tin',
-    //   });
-    //   return;
-    // }
-
-    dispatch(genTestingInput({
-      model: {
-        ...values,
-        testingId:  params.id,
-      },
+    const { recommends, gens, results } = values;
+    if (!recommends || !recommends.length || !gens || !gens.length || !results || !results.length) {
+      notification.open({
+        message: 'Thông báo',
+        description: 'Vui lòng nhập đầy đủ thông tin',
+      });
+      return;
+    }
+    dispatch(subGenTestingCreate({
+      model: values,
       history,
     }));
   };
@@ -71,26 +49,7 @@ export const GenTestingInput = () => {
           <TextArea rows={5} placeholder='Nhập mô tả xét nghiệm' />
         </Form.Item>
 
-        <Form.Item name='gens'>
-          <Checkbox.Group style={{ width: '100%' }} onChange={onChange}>
-            <Row>
-              {
-                gens.map((item: any) => {
-                  return (
-                    <>
-                    <Col span={8}>
-                      <Checkbox value={item}>{item.name}</Checkbox>
-                    </Col>
-                    </>
-                  )
-                })
-              }
-            </Row>
-          </Checkbox.Group>
-        </Form.Item>
-
-
-        {/* <Form.List name='results'>
+        <Form.List name='results'>
           {(fields, { add, remove }) => (
             <>
               {fields.map(({ key, name, fieldKey, ...restField }, index) => (
@@ -228,10 +187,10 @@ export const GenTestingInput = () => {
               </Form.Item>
             </>
           )}
-        </Form.List> */}
+        </Form.List>
         <Form.Item>
           <Button loading={isLoading} type='primary' htmlType='submit'>
-            Thực hiện thêm xét nghiệm thành phần
+            Thực hiện xử lý kết quả xét nghiệm
         </Button>
         </Form.Item>
       </Form>

@@ -2,6 +2,7 @@ import { CREATE_GEN_TESTING_FAILURE, CREATE_GEN_TESTING_REQUEST, CREATE_GEN_TEST
 import axios from '../../shared/axios/axios.service';
 import { apiUrl } from '../config/config.service';
 import { notification } from 'antd';
+import { checkError } from '../../shared/helpers/checkError';
 
 export const createTestingAction = (payload: any) => {
   return async (dispatch: any) => {
@@ -21,9 +22,11 @@ export const createTestingAction = (payload: any) => {
         type: CREATE_GEN_TESTING_FAILURE,
         payload: { error }
       });
+
+      const description  = checkError(error)
       notification.open({
         message: 'Thông báo',
-        description: 'Vui lòng nhập dữ liệu hợp lệ',
+        description,
       });
     }
   }

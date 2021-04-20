@@ -18,6 +18,10 @@ export const doctorMenu = [
   {
     text: 'Thử nghiệm gen',
     path: '/gen_testing'
+  },
+  {
+    text: 'Quản lý bệnh nhân',
+    path: '/patients'
   }
 ]
 

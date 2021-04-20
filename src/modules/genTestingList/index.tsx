@@ -43,14 +43,14 @@ export const GenTestingList = () => {
       dataIndex: 'name',
       key: 'name',
     },
-    {
-      title: 'Tổng quan',
-      dataIndex: 'summary',
-      key: 'summary',
-      render: (text: string, record: any, index: any): any => {
-        return summaryGenTestingRecord(record);
-      }
-    },
+    // {
+    //   title: 'Tổng quan',
+    //   dataIndex: 'summary',
+    //   key: 'summary',
+    //   render: (text: string, record: any, index: any): any => {
+    //     return summaryGenTestingRecord(record);
+    //   }
+    // },
     {
       title: 'Người tạo',
       dataIndex: ['createdBy', 'fullname'],

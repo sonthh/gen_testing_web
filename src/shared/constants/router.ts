@@ -9,6 +9,10 @@ import { GenTestingCreate } from '../../modules/testingCreate'
 import { GenList } from '../../modules/gensList';
 import { GenCreate } from '../../modules/gensCreate';
 import { GenUpdate } from '../../modules/gensUpdate';
+import { subGenTestingInputReducer } from '../../modules/subGenTestingCreate/reducer';
+import { PatientList } from '../../modules/patientListByDoctor';
+import { PatientCreate } from '../../modules/patientCreate';
+import { PatientUpdate } from '../../modules/patientUpdate';
 
 export const routes = [
   {
@@ -59,10 +63,31 @@ export const routes = [
   {
     path: '/gens/:id',
     component: GenUpdate,
+    exact: true,
   },
   {
     path: '/gens/create',
     component: GenCreate,
-  }
-
+    exact: true,
+  },
+  {
+    path: '/gen_testing/:id/sub_testing/create',
+    component: subGenTestingInputReducer,
+    exact: true,
+  },
+  {
+    path: '/patients',
+    component: PatientList,
+    exact: true,
+  },
+  {
+    path: '/patients/create',
+    component: PatientCreate,
+    exact: true,
+  },
+  {
+    path: '/patients/:id/update',
+    component: PatientUpdate,
+    exact: true,
+  },
 ];

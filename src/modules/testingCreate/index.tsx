@@ -50,7 +50,7 @@ export const GenTestingCreate = () => {
         >
           <Input placeholder='Nhập tên xét nghiệm' />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           name='patient'
           rules={[{ required: true, message: 'Vui lòng chọn bệnh nhân' }]}
         >
@@ -61,7 +61,7 @@ export const GenTestingCreate = () => {
           >
             {paitientOptions}
           </Select>
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item>
           <Button loading={isLoading} type='primary' htmlType='submit' className='login-form-button'>
             Tạo xét nghiệm

@@ -25,11 +25,11 @@ export const TestingList = () => {
       dataIndex: 'name',
       key: 'name',
     },
-    {
-      title: 'Tên bệnh nhân',
-      dataIndex: ['patient', 'fullname'],
-      key: 'patient.fullName',
-    },
+    // {
+    //   title: 'Tên bệnh nhân',
+    //   dataIndex: ['patient', 'fullname'],
+    //   key: 'patient.fullName',
+    // },
     {
       title: 'Ngày tạo',
       dataIndex: 'createdAt',

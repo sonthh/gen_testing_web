@@ -18,6 +18,7 @@ export const loginAction = (payload: any) => {
 
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('role', data.role);
+      localStorage.setItem('userID', data.userID);
 
       payload.history.push('/gen_testing');
     } catch (error) {

@@ -2,13 +2,13 @@ import { Breadcrumb, Form, Input, Button, Select } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { createUserAction } from './action';
+import { createPatientAction } from './action';
 
-export const UserCreate = () => {
+export const PatientCreate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const data = useSelector((state: any) => state.userCreate.data);
-  const isLoading = useSelector((state: any) => state.userCreate.isLoading);
+  const data = useSelector((state: any) => state.patientCreate.data);
+  const isLoading = useSelector((state: any) => state.patientCreate.isLoading);
 
   useEffect(() => {
     onInit();
@@ -18,8 +18,8 @@ export const UserCreate = () => {
   }
 
   const onFinish = (values: any) => {
-    dispatch(createUserAction({
-      model: values,
+    dispatch(createPatientAction({
+      model: { ...values, role: 'PATIENT' },
       history,
     }));
   }
@@ -31,9 +31,9 @@ export const UserCreate = () => {
           <Link to={'/gen_testing'}>Trang chủ</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link to={'/users'}>Người dùng</Link>
+          <Link to={'/users'}>Quản lý bệnh nhân</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Thêm nguời dùng</Breadcrumb.Item>
+        <Breadcrumb.Item>Thêm bệnh nhân</Breadcrumb.Item>
       </Breadcrumb>
       <Form
         name='normal_login'
@@ -91,21 +91,9 @@ export const UserCreate = () => {
             placeholder='Chọn trạng thái'
           />
         </Form.Item>
-        <Form.Item
-          name='role'
-          rules={[{ required: true, message: 'Vui lòng chọn vai trò người dùng' }]}
-        >
-          <Select
-            options={[
-              { label: 'Bác sĩ', value: 'DOCTOR' },
-              { label: 'Bệnh nhân', value: 'PATIENT' },
-            ]}
-            placeholder='Chọn vai trò người dùng'
-          />
-        </Form.Item>
         <Form.Item>
           <Button loading={isLoading} type='primary' htmlType='submit' className='login-form-button'>
-            Tạo người dùng
+            Tạo bệnh nhân
           </Button>
         </Form.Item>
       </Form>
