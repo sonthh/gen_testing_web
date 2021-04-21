@@ -64,9 +64,13 @@ export const PatientList = () => {
       key: 'action',
       render: (text: string, record: any, index: any): any => {
         return (
-          <Link to={`/patients/${record._id}/update`}>
-            Sửa
-          </Link>
+          <>
+            <Link to={`/patients/${record._id}/update`}>
+              Sửa
+            </Link> | <Link to={`/patients/${record._id}/update`}>
+              Chi tiết
+            </Link>
+          </>
         );
       }
     },

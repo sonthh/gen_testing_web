@@ -4,6 +4,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { genTestingInput } from './action';
 import TextArea from 'antd/lib/input/TextArea';
+import { Checkbox } from 'antd';
 import { useEffect } from 'react';
 import { findManyGenAction } from '../gensList/action';
 
@@ -22,6 +23,10 @@ export const GenTestingInput = () => {
 
   const onInit = () => {
     dispatch(findManyGenAction({}));
+  }
+
+  const  onChange = (checkedValues: any) => {
+    console.log('checked = ', checkedValues);
   }
 
   const onFinish = (values: any) => {
@@ -117,7 +122,7 @@ export const GenTestingInput = () => {
                         <Input placeholder='Nhập tính chất' />
                       </Form.Item> */}
                     </Space>
-                    {/* <Form.Item
+                    <Form.Item
                       {...restField}
                       name={[name, 'affect']}
                       fieldKey={[fieldKey, 'affect']}
@@ -132,7 +137,7 @@ export const GenTestingInput = () => {
                       rules={[{ required: true, message: 'Vui lòng nhập nội dung' }]}
                     >
                       <Input.TextArea rows={3} placeholder='Nhập nội dụng nội dung' />
-                    </Form.Item> */}
+                    </Form.Item>
 
 
                   </Col>

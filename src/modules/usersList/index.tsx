@@ -16,7 +16,7 @@ export const UserList = () => {
   }, []);
 
   const onInit = () => {
-    dispatch(findManyUsers({}));
+    dispatch(findManyUsers({ role: 'DOCTOR' }));
   }
 
   const columns = [
@@ -67,9 +67,9 @@ export const UserList = () => {
     },
   ];
 
-  const handleFilterRole = (role: string) => {
-    dispatch(findManyUsers({ role }));
-  }
+  // const handleFilterRole = (role: string) => {
+  //   dispatch(findManyUsers({ role }));
+  //}
 
   return (
     <>
@@ -86,23 +86,23 @@ export const UserList = () => {
           </Link>
         </Col>
         <Col span={4}>
-          <Input 
+          <Input
           onPressEnter={(e: any) => {
             let fullname = e.target.value;
             if (!fullname || !fullname.length) {
               fullname = null;
             }
             dispatch(findManyUsers({ fullname }));
-          }} 
+          }}
           placeholder='Tìm theo tên' />
         </Col>
-        <Col span={8}>
+        {/* <Col span={8}>
           <Space>
             <Tag className='roleTag' color="magenta" onClick={() => handleFilterRole('DOCTOR')}>Bác sĩ</Tag>
             <Tag className='roleTag' color="red" onClick={() => handleFilterRole('PATIENT')}>Bệnh nhân</Tag>
             <Tag className='roleTag' color="volcano" onClick={() => handleFilterRole('ADMIN')}>Quản trị</Tag>
           </Space>
-        </Col>
+        </Col> */}
       </Row>
       <Table loading={isLoading} columns={columns} dataSource={data} pagination={false} />
     </>
