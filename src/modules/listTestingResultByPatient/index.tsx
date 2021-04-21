@@ -43,7 +43,7 @@ export const PatientTestingResultDetail = () => {
         return (
           <>
             <Link to={`/patients/my_result/${record._id}`}>
-             Xem kết quả
+              Xem kết quả
             </Link>
           </>
         );
@@ -57,21 +57,9 @@ export const PatientTestingResultDetail = () => {
         <Breadcrumb.Item>
           <Link to={'/gen_testing'}>Trang chủ</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Kết quả xet nghiệm</Breadcrumb.Item>
+        <Breadcrumb.Item>Kết quả xét nghiệm</Breadcrumb.Item>
       </Breadcrumb>
       <Row style={{ marginBottom: 20 }} justify='space-between'>
-
-        {/* <Col span={4}>
-          <Input
-          onPressEnter={(e: any) => {
-            let fullname = e.target.value;
-            if (!fullname || !fullname.length) {
-              fullname = null;
-            }
-            dispatch(findManyUsers({ fullname }));
-          }}
-          placeholder='Tìm theo tên' />
-        </Col> */}
       </Row>
       <Table loading={isLoading} columns={columns} dataSource={data} pagination={false} />
     </>

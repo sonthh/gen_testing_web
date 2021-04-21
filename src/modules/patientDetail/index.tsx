@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 // import { userRole, userStatus } from '../../shared/constants';
-import { findPaitientTestingResult } from './action';
+import { findPaitientTestingResult, sendMailToPatientAction } from './action';
 import { PlusOutlined } from '@ant-design/icons';
 
 export const PatientDetail = () => {
@@ -16,11 +16,14 @@ export const PatientDetail = () => {
     onInit();
   }, []);
 
-  // const userID = localStorage.getItem('userID');
-
   const onInit = () => {
-    // console.log(params.id);
     dispatch(findPaitientTestingResult({
+      patient: params.id,
+    }));
+  }
+
+  const sendMailToPatient = () => {
+    dispatch(sendMailToPatientAction({
       patient: params.id,
     }));
   }
@@ -43,7 +46,7 @@ export const PatientDetail = () => {
       render: (text: string, record: any, index: any): any => {
         return (
           <>
-            <Button type='primary'>Gởi mail</Button> | 
+            <Button type='primary' onClick={sendMailToPatient}>Gởi mail</Button> | 
             <Link to={`/patients/${params.id}/testing_results/${record._id}/update`}>
               Cập nhật kết quả
             </Link>

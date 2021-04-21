@@ -20,7 +20,17 @@ export const loginAction = (payload: any) => {
       localStorage.setItem('role', data.role);
       localStorage.setItem('userID', data.userID);
 
-      payload.history.push('/gen_testing');
+      if (data.role === 'PATIENT') {
+        payload.history.push('/patients/my_result');
+      }
+
+      if (data.role === 'DOCTOR') {
+        payload.history.push('/patients');
+      }
+
+      if (data.role === 'ADMIN') {
+        payload.history.push('/users');
+      }
     } catch (error) {
       dispatch({
         type: LOGIN_FAILURE,
