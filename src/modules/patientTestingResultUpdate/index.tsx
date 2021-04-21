@@ -1,37 +1,40 @@
-import { Breadcrumb, Button, Form, Input, Space, Divider, Row, Col, notification } from 'antd';
+import { Breadcrumb, Button, Form, Input, Space, Divider, Row, Col, notification, Select } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { patientTestingResultUpdateAction } from './action';
+import { patientTestingResultUpdateAction, findOnePatientTestingResultAction } from './action';
 import TextArea from 'antd/lib/input/TextArea';
 import { Checkbox } from 'antd';
 import { useEffect } from 'react';
 import { findManyGenAction } from '../gensList/action';
 import { findManyGenTestings } from '../genTestingList/action';
 
+const { Option } = Select;
+
+
 export const PatientTestingResultUpdate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const data = useSelector((state: any) => state.genTestingInput.data);
-  const isLoading = useSelector((state: any) => state.genTestingInput.isLoading);
+  const data = useSelector((state: any) => state.patientTestingResultUpdate.data);
+  const isLoading = useSelector((state: any) => state.patientTestingResultUpdate.isLoading);
   const params: any = useParams()
 
-  const gens = useSelector((state: any) => state.genList.data) || [];
+  const genTestingList = useSelector((state: any) => state.genTestingList.data);
+
+  const testingOptions = genTestingList?.map((e: any) => (
+    <Option value={e._id}>{e.name}</Option>
+  ));
 
   useEffect(() => {
     onInit();
   }, []);
 
   const onInit = () => {
-    // dispatch(findManyGenAction({}));
-
+    dispatch(findOnePatientTestingResultAction(params.testingResultId,));
     dispatch(findManyGenTestings({
-      testingId: '',
+      testingId: data?.testingId
     }));
-  }
 
-  const  onChange = (checkedValues: any) => {
-    console.log('checked = ', checkedValues);
   }
 
   const onFinish = (values: any) => {
@@ -63,77 +66,17 @@ export const PatientTestingResultUpdate = () => {
       </Breadcrumb>
       <Form layout='vertical' name='dynamic_form_nest_item' onFinish={onFinish} autoComplete='off'>
         <Form.Item
-          name='name'
-          rules={[{ required: true, message: 'Vui lòng nhập tên xét nghiệm' }]}
+          name='testingId'
+          rules={[{ required: true, message: 'Vui lòng chọn tên xet nghiệm' }]}
         >
-          <Input placeholder='Nhập tên xét nghiệm' />
+          <Select
+            showSearch
+            placeholder='Chọn xét nghiệm'
+            optionFilterProp='children'
+          >
+            {testingOptions}
+          </Select>
         </Form.Item>
-        <Form.List name='gens'>
-          {(fields, { add, remove }) => (
-            <>
-              {fields.map(({ key, name, fieldKey, ...restField }, index) => (
-                <Row key={key}>
-                  <Col span={20}>
-                    <Space>
-                      <Form.Item
-                        {...restField}
-                        name={[name, 'name']}
-                        fieldKey={[fieldKey, 'name']}
-                        rules={[{ required: true, message: 'Vui lòng nhập tên khuyến nghị' }]}
-                      >
-                        <Input placeholder='Nhập tên gen' />
-                      </Form.Item>
-                      <Form.Item
-                        {...restField}
-                        name={[name, 'type']}
-                        fieldKey={[fieldKey, 'type']}
-                        rules={[{ required: true, message: 'Vui lòng nhập kiểu gen' }]}
-                      >
-                        <Input placeholder='Nhập kiểu gen' />
-                      </Form.Item>
-
-                      <Form.Item
-                        {...restField}
-                        name={[name, 'property']}
-                        fieldKey={[fieldKey, 'property']}
-                        rules={[{ required: true, message: 'Vui lòng nhập tính chất' }]}
-                      >
-                        <Input placeholder='Nhập tính chất' />
-                      </Form.Item>
-                    </Space>
-                    <Form.Item
-                      {...restField}
-                      name={[name, 'affect']}
-                      fieldKey={[fieldKey, 'affect']}
-                      rules={[{ required: true, message: 'Vui lòng nhập ảnh hưởng' }]}
-                    >
-                      <Input.TextArea rows={3} placeholder='Nhập ảnh hưởng' />
-                    </Form.Item>
-                    <Form.Item
-                      {...restField}
-                      name={[name, 'content']}
-                      fieldKey={[fieldKey, 'content']}
-                      rules={[{ required: true, message: 'Vui lòng nhập nội dung' }]}
-                    >
-                      <Input.TextArea rows={3} placeholder='Nhập nội dụng nội dung' />
-                    </Form.Item>
-
-
-                  </Col>
-                  <Col span={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <MinusCircleOutlined style={{ fontSize: '20px', color: 'red' }} onClick={() => remove(name)} />
-                  </Col>
-                  <Divider />
-                </Row>
-              ))}
-              <Form.Item>
-                <Button type='dashed' onClick={() => add()} block icon={<PlusOutlined />}>
-                  Thêm gen
-              </Button>
-              </Form.Item>
-            </>
-          )}
-        </Form.List>
 
 
         <Form.List name='results'>

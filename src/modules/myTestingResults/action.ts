@@ -9,7 +9,7 @@ export const findMyTestingResults = (id: any) => {
     });
     try {
       const { data } = await axios
-        .get(`${apiUrl}/test_results/${id}`);
+        .get(`${apiUrl}/testing_results/${id}`);
       dispatch({
         type: FIND_MY_TESTING_RESULT_SUCCESS,
         payload: { data }

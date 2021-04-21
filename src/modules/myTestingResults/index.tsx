@@ -26,7 +26,7 @@ export const MyTestingResults = () => {
         <Breadcrumb.Item>
           <Link to={'/gen_testing'}>Trang chủ</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Kết quả thử nghiệm gen</Breadcrumb.Item>
+        <Breadcrumb.Item>Kết quả thử xét nghiêm</Breadcrumb.Item>
       </Breadcrumb>
       <Row className='myTestingResults'>
           <Row>
@@ -41,7 +41,7 @@ export const MyTestingResults = () => {
           <Row className="result_detail">
             <Descriptions title="Các gen phân tích" >
             {
-              data?.gens?.map((result: any) => {
+              data?.testResult?.gens?.map((result: any) => {
                 return (
                   <>
                     <Descriptions.Item label="Tên gen" >{result.name}</Descriptions.Item>
@@ -59,7 +59,7 @@ export const MyTestingResults = () => {
           <Row  className="result_detail" >
             <Descriptions title="Kết quả và ý nghĩa">
             {
-              data?.results?.map((result: any) => {
+              data?.testResult?.results?.map((result: any) => {
                 return (
                   <>
                     <Descriptions.Item label="Kết quả" span={3}>{result.result}</Descriptions.Item>
@@ -74,7 +74,7 @@ export const MyTestingResults = () => {
           <Row className="result_detail">
           <Descriptions title="Khuyến nghị cho bạn">
           {
-            data?.recommends?.map((result: any) => {
+            data?.testResult?.recommends?.map((result: any) => {
               return (
                <>
                 <Descriptions.Item label="Tiêu đề" span={3}>{result.recommend}</Descriptions.Item>

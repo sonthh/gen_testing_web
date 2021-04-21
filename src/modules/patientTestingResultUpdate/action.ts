@@ -1,4 +1,10 @@
-import { PATIENT_TESTING_RESULT_UPDATE_FAILURE, PATIENT_TESTING_RESULT_UPDATE_REQUEST, PATIENT_TESTING_RESULT_UPDATE_SUCCESS} from './actionTypes';
+import { PATIENT_TESTING_RESULT_UPDATE_FAILURE,
+  PATIENT_TESTING_RESULT_UPDATE_REQUEST,
+  PATIENT_TESTING_RESULT_UPDATE_SUCCESS,
+  FIND_ONE_PATIENT_TESTING_RESULT_REQUEST,
+  FIND_ONE_PATIENT_TESTING_RESULT_SUCCESS,
+  FIND_ONE_PATIENT_TESTING_RESULT_FAILURE
+} from './actionTypes';
 import axios from '../../shared/axios/axios.service';
 import { apiUrl } from '../config/config.service';
 import { checkError } from '../../shared/helpers/checkError';
@@ -28,6 +34,28 @@ export const patientTestingResultUpdateAction = (payload: any) => {
       notification.open({
         message: 'Thông báo',
         description,
+      });
+    }
+  }
+}
+
+
+export const findOnePatientTestingResultAction = (id: string) => {
+  return async (dispatch: any) => {
+    dispatch({
+      type: FIND_ONE_PATIENT_TESTING_RESULT_REQUEST,
+    });
+    try {
+      const { data } = await axios.get(`${apiUrl}/testing_results/${id}`);
+
+      dispatch({
+        type: FIND_ONE_PATIENT_TESTING_RESULT_SUCCESS,
+        payload: { data }
+      });
+    } catch (error) {
+      dispatch({
+        type: FIND_ONE_PATIENT_TESTING_RESULT_FAILURE,
+        payload: { error }
       });
     }
   }

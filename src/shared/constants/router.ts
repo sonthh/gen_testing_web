@@ -16,6 +16,7 @@ import { PatientUpdate } from '../../modules/patientUpdate';
 import { PatientDetail } from '../../modules/patientDetail';
 import { PatientTestingResultCreate } from '../../modules/patientTestingResultCreate';
 import { PatientTestingResultUpdate } from '../../modules/patientTestingResultUpdate';
+import { PatientTestingResultDetail } from '../../modules/patientTestingResult';
 
 export const routes = [
   {
@@ -106,6 +107,16 @@ export const routes = [
   {
     path: '/patients/:id/testing_results/:testingResultId/update',
     component: PatientTestingResultUpdate,
+    exact: true,
+  },
+  {
+    path: '/patients/my_result/:id',
+    component: MyTestingResults,
+    exact: true,
+  },
+  {
+    path: '/patients/my_result',
+    component: PatientTestingResultDetail,
     exact: true,
   },
 ];
