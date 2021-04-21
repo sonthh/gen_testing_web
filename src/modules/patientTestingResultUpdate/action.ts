@@ -40,7 +40,6 @@ export const patientTestingResultUpdateAction = (payload: any) => {
   }
 }
 
-
 export const findOnePatientTestingResultAction = (id: string) => {
   return async (dispatch: any) => {
     dispatch({
@@ -53,8 +52,7 @@ export const findOnePatientTestingResultAction = (id: string) => {
         type: FIND_ONE_PATIENT_TESTING_RESULT_SUCCESS,
         payload: { data }
       });
-      console.log(data);
-      
+
       dispatch(findManyGenTestings({
         testingId: data?.testingId._id
       }));

@@ -3,26 +3,20 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { patientTestingResultUpdateAction, findOnePatientTestingResultAction } from './action';
-import TextArea from 'antd/lib/input/TextArea';
-import { Checkbox } from 'antd';
 import { useEffect } from 'react';
-import { findManyGenAction } from '../gensList/action';
-import { findManyGenTestings } from '../genTestingList/action';
 
 const { Option } = Select;
-
 
 export const PatientTestingResultUpdate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const data = useSelector((state: any) => state.patientTestingResultUpdate.data);
+  // const data = useSelector((state: any) => state.patientTestingResultUpdate.data);
   const isLoading = useSelector((state: any) => state.patientTestingResultUpdate.isLoading);
   const params: any = useParams()
-
   const genTestingList = useSelector((state: any) => state.genTestingList.data);
 
-  const testingOptions = genTestingList?.map((e: any) => (
-    <Option value={e._id}>{e.name}</Option>
+  const testingOptions = genTestingList?.map((e: any, index: number) => (
+    <Option key={index} value={e.name}>{e.name}</Option>
   ));
 
   useEffect(() => {
@@ -31,29 +25,26 @@ export const PatientTestingResultUpdate = () => {
 
   const onInit = () => {
     dispatch(findOnePatientTestingResultAction(params.testingResultId));
-    // dispatch(findManyGenTestings({
-    //   testingId: data?.testingId
-    // }));
-
   }
 
   const onFinish = (values: any) => {
-    // const { recommends, gens, results } = values;
-    // if (!recommends || !recommends.length || !gens || !gens.length || !results || !results.length) {
-    //   notification.open({
-    //     message: 'Thông báo',
-    //     description: 'Vui lòng nhập đầy đủ thông tin',
-    //   });
-    //   return;
-    // }
+    const { recommends, gens, results } = values;
+    if (!recommends || !recommends.length || !gens || !gens.length || !results || !results.length) {
+      notification.open({
+        message: 'Thông báo',
+        description: 'Vui lòng nhập đầy đủ thông tin',
+      });
+      return;
+    }
+    console.log(values);
 
-    dispatch(patientTestingResultUpdateAction({
-      model: {
-        ...values,
-        testingId:  params.id,
-      },
-      history,
-    }));
+    // dispatch(patientTestingResultUpdateAction({
+    //   model: {
+    //     ...values,
+    //     testingId:  params.id,
+    //   },
+    //   history,
+    // }));
   };
 
   return (
@@ -67,7 +58,7 @@ export const PatientTestingResultUpdate = () => {
       <Form layout='vertical' name='dynamic_form_nest_item' onFinish={onFinish} autoComplete='off'>
         <Form.Item
           name='testingId'
-          rules={[{ required: true, message: 'Vui lòng chọn tên xet nghiệm' }]}
+          rules={[{ required: true, message: 'Vui lòng chọn xét nghiệm' }]}
         >
           <Select
             showSearch
@@ -77,8 +68,6 @@ export const PatientTestingResultUpdate = () => {
             {testingOptions}
           </Select>
         </Form.Item>
-
-
         <Form.List name='results'>
           {(fields, { add, remove }) => (
             <>
