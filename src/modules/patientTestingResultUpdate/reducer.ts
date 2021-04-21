@@ -5,7 +5,7 @@ const initialState = {
   data: {},
 }
 
-export const patientTestingResultUpdate = (state = initialState, { type, payload }: any) => {
+export const patientTestingResultUpdateReducer = (state = initialState, { type, payload }: any) => {
   switch (type) {
     case PATIENT_TESTING_RESULT_UPDATE_REQUEST: {
       return {

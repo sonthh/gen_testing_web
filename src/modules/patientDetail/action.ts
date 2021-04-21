@@ -13,8 +13,6 @@ export const findPaitientTestingResult = (params: any) => {
           params
         });
 
-        console.log(data);
-        
       dispatch({
         type: FIND_PATIENT_TESTING_RESULT_SUCCESS,
         payload: { data: data.list }

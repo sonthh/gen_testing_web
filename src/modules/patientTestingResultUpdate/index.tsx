@@ -7,6 +7,7 @@ import TextArea from 'antd/lib/input/TextArea';
 import { Checkbox } from 'antd';
 import { useEffect } from 'react';
 import { findManyGenAction } from '../gensList/action';
+import { findManyGenTestings } from '../genTestingList/action';
 
 export const PatientTestingResultUpdate = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,11 @@ export const PatientTestingResultUpdate = () => {
   }, []);
 
   const onInit = () => {
-    dispatch(findManyGenAction({}));
+    // dispatch(findManyGenAction({}));
+
+    dispatch(findManyGenTestings({
+      testingId: '',
+    }));
   }
 
   const  onChange = (checkedValues: any) => {
@@ -62,13 +67,6 @@ export const PatientTestingResultUpdate = () => {
           rules={[{ required: true, message: 'Vui lòng nhập tên xét nghiệm' }]}
         >
           <Input placeholder='Nhập tên xét nghiệm' />
-        </Form.Item>
-
-        <Form.Item
-          name='description'
-          rules={[{ required: true, message: 'Vui lòng nhập mô tả' }]}
-        >
-          <TextArea rows={5} placeholder='Nhập mô tả xét nghiệm' />
         </Form.Item>
         <Form.List name='gens'>
           {(fields, { add, remove }) => (
