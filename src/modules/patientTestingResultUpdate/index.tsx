@@ -36,15 +36,19 @@ export const PatientTestingResultUpdate = () => {
       });
       return;
     }
-    console.log(values);
 
-    // dispatch(patientTestingResultUpdateAction({
-    //   model: {
-    //     ...values,
-    //     testingId:  params.id,
-    //   },
-    //   history,
-    // }));
+    dispatch(patientTestingResultUpdateAction({
+      testingResultId: params.testingResultId,
+      patientId: params.id,
+      model: {
+        testResult: [
+          {
+            ...values,
+          }
+        ]
+      },
+      history,
+    }));
   };
 
   return (
@@ -57,7 +61,7 @@ export const PatientTestingResultUpdate = () => {
       </Breadcrumb>
       <Form layout='vertical' name='dynamic_form_nest_item' onFinish={onFinish} autoComplete='off'>
         <Form.Item
-          name='testingId'
+          name='name'
           rules={[{ required: true, message: 'Vui lòng chọn xét nghiệm' }]}
         >
           <Select

@@ -18,12 +18,12 @@ export const patientTestingResultUpdateAction = (payload: any) => {
     });
     try {
       const { data } = await axios
-        .post(`${apiUrl}/testing_results/update`, payload.model);
+        .put(`${apiUrl}/testing_results/${payload.testingResultId}`, payload.model);
       dispatch({
         type: PATIENT_TESTING_RESULT_UPDATE_SUCCESS,
         payload: { data }
       });
-      payload.history.push(`/patients/${payload.model.patient}/detail`);
+      payload.history.push(`/patients/${payload.patientId}/detail`);
     } catch (error) {
       dispatch({
         type: PATIENT_TESTING_RESULT_UPDATE_FAILURE,
