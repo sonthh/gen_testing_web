@@ -16,7 +16,7 @@ import { PatientUpdate } from '../../modules/patientUpdate';
 import { PatientDetail } from '../../modules/patientDetail';
 import { PatientTestingResultCreate } from '../../modules/patientTestingResultCreate';
 import { PatientTestingResultUpdate } from '../../modules/patientTestingResultUpdate';
-import { PatientTestingResultDetail } from '../../modules/patientTestingResult';
+import { PatientTestingResultDetail } from '../../modules/listTestingResultByPatient';
 
 export const routes = [
   {

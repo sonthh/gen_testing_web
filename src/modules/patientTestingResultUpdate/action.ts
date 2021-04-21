@@ -9,6 +9,7 @@ import axios from '../../shared/axios/axios.service';
 import { apiUrl } from '../config/config.service';
 import { checkError } from '../../shared/helpers/checkError';
 import { notification } from 'antd';
+import { findManyGenTestings } from '../genTestingList/action';
 
 export const patientTestingResultUpdateAction = (payload: any) => {
   return async (dispatch: any) => {
@@ -52,6 +53,11 @@ export const findOnePatientTestingResultAction = (id: string) => {
         type: FIND_ONE_PATIENT_TESTING_RESULT_SUCCESS,
         payload: { data }
       });
+      console.log(data);
+      
+      dispatch(findManyGenTestings({
+        testingId: data?.testingId._id
+      }));
     } catch (error) {
       dispatch({
         type: FIND_ONE_PATIENT_TESTING_RESULT_FAILURE,

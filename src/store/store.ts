@@ -18,7 +18,7 @@ import { patientCreateReducer } from '../modules/patientCreate/reducer';
 import { patientDetailReducer } from '../modules/patientDetail/reducer';
 import { patientTestingResultCreateReducer } from '../modules/patientTestingResultCreate/reducer';
 import { patientTestingResultUpdateReducer } from '../modules/patientTestingResultUpdate/reducer';
-import { patientTestingDetailReducer } from '../modules/patientTestingResult/reducer';
+import { patientTestingDetailReducer } from '../modules/listTestingResultByPatient/reducer';
 
 export const rootReducer = combineReducers({
   userList: userListReducer,

@@ -30,10 +30,10 @@ export const PatientTestingResultUpdate = () => {
   }, []);
 
   const onInit = () => {
-    dispatch(findOnePatientTestingResultAction(params.testingResultId,));
-    dispatch(findManyGenTestings({
-      testingId: data?.testingId
-    }));
+    dispatch(findOnePatientTestingResultAction(params.testingResultId));
+    // dispatch(findManyGenTestings({
+    //   testingId: data?.testingId
+    // }));
 
   }
 
