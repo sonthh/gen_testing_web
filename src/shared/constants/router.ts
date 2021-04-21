@@ -13,6 +13,9 @@ import { subGenTestingInputReducer } from '../../modules/subGenTestingCreate/red
 import { PatientList } from '../../modules/patientListByDoctor';
 import { PatientCreate } from '../../modules/patientCreate';
 import { PatientUpdate } from '../../modules/patientUpdate';
+import { PatientDetail } from '../../modules/patientDetail';
+import { PatientTestingResultCreate } from '../../modules/patientTestingResultCreate';
+import { PatientTestingResultUpdate } from '../../modules/patientTestingResultUpdate';
 
 export const routes = [
   {
@@ -88,6 +91,21 @@ export const routes = [
   {
     path: '/patients/:id/update',
     component: PatientUpdate,
+    exact: true,
+  },
+  {
+    path: '/patients/:id/detail',
+    component: PatientDetail,
+    exact: true,
+  },
+  {
+    path: '/patients/:id/testing_results/create',
+    component: PatientTestingResultCreate,
+    exact: true,
+  },
+  {
+    path: '/patients/:id/testing_results/:testingResultId/update',
+    component: PatientTestingResultUpdate,
     exact: true,
   },
 ];

@@ -1,27 +1,25 @@
-import { GEN_TESTING_INPUT_FAILURE, GEN_TESTING_INPUT_REQUEST, GEN_TESTING_INPUT_SUCCESS } from './actionTypes';
+import { PATIENT_TESTING_RESULT_UPDATE_FAILURE, PATIENT_TESTING_RESULT_UPDATE_REQUEST, PATIENT_TESTING_RESULT_UPDATE_SUCCESS} from './actionTypes';
 import axios from '../../shared/axios/axios.service';
 import { apiUrl } from '../config/config.service';
 import { checkError } from '../../shared/helpers/checkError';
 import { notification } from 'antd';
 
-
-
-export const genTestingInput = (payload: any) => {
+export const patientTestingResultUpdateAction = (payload: any) => {
   return async (dispatch: any) => {
     dispatch({
-      type: GEN_TESTING_INPUT_REQUEST,
+      type: PATIENT_TESTING_RESULT_UPDATE_REQUEST,
     });
     try {
       const { data } = await axios
-        .post(`${apiUrl}/test_results`, payload.model);
+        .post(`${apiUrl}/testing_results/update`, payload.model);
       dispatch({
-        type: GEN_TESTING_INPUT_SUCCESS,
+        type: PATIENT_TESTING_RESULT_UPDATE_SUCCESS,
         payload: { data }
       });
-      payload.history.push(`/gen_testing/${payload?.model?.testingId}/results`);
+      payload.history.push(`/patients/${payload.model.patient}/detail`);
     } catch (error) {
       dispatch({
-        type: GEN_TESTING_INPUT_FAILURE,
+        type: PATIENT_TESTING_RESULT_UPDATE_FAILURE,
         payload: { error }
       })
 

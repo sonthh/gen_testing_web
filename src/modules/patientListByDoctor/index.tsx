@@ -67,7 +67,7 @@ export const PatientList = () => {
           <>
             <Link to={`/patients/${record._id}/update`}>
               Sửa
-            </Link> | <Link to={`/patients/${record._id}/update`}>
+            </Link> | <Link to={`/patients/${record._id}/detail`}>
               Chi tiết
             </Link>
           </>

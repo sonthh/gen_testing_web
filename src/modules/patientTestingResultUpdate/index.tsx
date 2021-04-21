@@ -2,13 +2,13 @@ import { Breadcrumb, Button, Form, Input, Space, Divider, Row, Col, notification
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { genTestingInput } from './action';
+import { patientTestingResultUpdateAction } from './action';
 import TextArea from 'antd/lib/input/TextArea';
 import { Checkbox } from 'antd';
 import { useEffect } from 'react';
 import { findManyGenAction } from '../gensList/action';
 
-export const GenTestingInput = () => {
+export const PatientTestingResultUpdate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const data = useSelector((state: any) => state.genTestingInput.data);
@@ -39,7 +39,7 @@ export const GenTestingInput = () => {
     //   return;
     // }
 
-    dispatch(genTestingInput({
+    dispatch(patientTestingResultUpdateAction({
       model: {
         ...values,
         testingId:  params.id,
@@ -70,25 +70,6 @@ export const GenTestingInput = () => {
         >
           <TextArea rows={5} placeholder='Nhập mô tả xét nghiệm' />
         </Form.Item>
-
-        {/* <Form.Item name='gens'>
-          <Checkbox.Group style={{ width: '100%' }} onChange={onChange}>
-            <Row>
-              {
-                gens.map((item: any) => {
-                  return (
-                    <>
-                    <Col span={8}>
-                      <Checkbox value={item}>{item.name}</Checkbox>
-                    </Col>
-                    </>
-                  )
-                })
-              }
-            </Row>
-          </Checkbox.Group>
-        </Form.Item> */}
-
         <Form.List name='gens'>
           {(fields, { add, remove }) => (
             <>
@@ -104,23 +85,23 @@ export const GenTestingInput = () => {
                       >
                         <Input placeholder='Nhập tên gen' />
                       </Form.Item>
-                      {/* <Form.Item
+                      <Form.Item
                         {...restField}
                         name={[name, 'type']}
                         fieldKey={[fieldKey, 'type']}
                         rules={[{ required: true, message: 'Vui lòng nhập kiểu gen' }]}
                       >
                         <Input placeholder='Nhập kiểu gen' />
-                      </Form.Item> */}
+                      </Form.Item>
 
-                      {/* <Form.Item
+                      <Form.Item
                         {...restField}
                         name={[name, 'property']}
                         fieldKey={[fieldKey, 'property']}
                         rules={[{ required: true, message: 'Vui lòng nhập tính chất' }]}
                       >
                         <Input placeholder='Nhập tính chất' />
-                      </Form.Item> */}
+                      </Form.Item>
                     </Space>
                     <Form.Item
                       {...restField}
@@ -157,7 +138,7 @@ export const GenTestingInput = () => {
         </Form.List>
 
 
-        {/* <Form.List name='results'>
+        <Form.List name='results'>
           {(fields, { add, remove }) => (
             <>
               {fields.map(({ key, name, fieldKey, ...restField }, index) => (
@@ -295,7 +276,7 @@ export const GenTestingInput = () => {
               </Form.Item>
             </>
           )}
-        </Form.List> */}
+        </Form.List>
         <Form.Item>
           <Button loading={isLoading} type='primary' htmlType='submit'>
             Thực hiện thêm xét nghiệm thành phần
