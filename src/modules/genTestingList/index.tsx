@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import { deleteGenTestings, findManyGenTestings } from './action';
 import { PlusOutlined } from '@ant-design/icons';
 import moment from 'moment';
-import { DeleteOutlined , EyeOutlined} from '@ant-design/icons';
+import { DeleteOutlined , EditOutlined} from '@ant-design/icons';
 
 const summaryGenTestingRecord = (record: any) => {
   const gens = record?.gens;
@@ -74,8 +74,8 @@ export const GenTestingList = () => {
           <Button type='primary' danger icon={<DeleteOutlined />}
             onClick={() => deleteTestingResultHandler(record._id)}
           /><span> </span>
-           <Link to={`/gen_testing/${record.testingId}/results/${record._id}`}>
-            <Button icon={<EyeOutlined />} type='primary' />
+           <Link to={`/gen_testing/${record.testingId}/results/${record._id}/update`}>
+            <Button icon={<EditOutlined />} type='primary' />
           </Link>
           </>
         );
@@ -89,7 +89,7 @@ export const GenTestingList = () => {
         <Breadcrumb.Item>
           <Link to={'/gen_testing'}>Trang chủ</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Kết quả thử nghiệm gen</Breadcrumb.Item>
+        <Breadcrumb.Item>Quản lý xét nghiệm</Breadcrumb.Item>
       </Breadcrumb>
       <Row style={{ marginBottom: 20 }} justify='space-between'>
         <Col span={8}>

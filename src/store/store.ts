@@ -19,6 +19,7 @@ import { patientDetailReducer } from '../modules/patientDetail/reducer';
 import { patientTestingResultCreateReducer } from '../modules/patientTestingResultCreate/reducer';
 import { patientTestingResultUpdateReducer } from '../modules/patientTestingResultUpdate/reducer';
 import { patientTestingDetailReducer } from '../modules/listTestingResultByPatient/reducer';
+import { genTestingUpdateReducer } from '../modules/genTestingUpdate/reducer';
 
 export const rootReducer = combineReducers({
   userList: userListReducer,
@@ -42,4 +43,5 @@ export const rootReducer = combineReducers({
   patientTestingResultCreate: patientTestingResultCreateReducer,
   patientTestingResultUpdate: patientTestingResultUpdateReducer,
   patientTestingDetail: patientTestingDetailReducer,
+  genTestingUpdate: genTestingUpdateReducer,
 });

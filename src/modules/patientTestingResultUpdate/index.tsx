@@ -57,7 +57,7 @@ export const PatientTestingResultUpdate = () => {
         <Breadcrumb.Item>
           <Link to={'/'}>Trang chủ</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Nhập dữ liệu kiểm thử gen</Breadcrumb.Item>
+        <Breadcrumb.Item>Cập nhật kêt quả xet nghiệm</Breadcrumb.Item>
       </Breadcrumb>
       <Form layout='vertical' name='dynamic_form_nest_item' onFinish={onFinish} autoComplete='off'>
         <Form.Item
@@ -213,7 +213,7 @@ export const PatientTestingResultUpdate = () => {
         </Form.List>
         <Form.Item>
           <Button loading={isLoading} type='primary' htmlType='submit'>
-            Thực hiện thêm xét nghiệm thành phần
+            Thực hiện cập nhật kết quả
         </Button>
         </Form.Item>
       </Form>
