@@ -18,6 +18,7 @@ import { PatientTestingResultCreate } from '../../modules/patientTestingResultCr
 import { PatientTestingResultUpdate } from '../../modules/patientTestingResultUpdate';
 import { PatientTestingResultDetail } from '../../modules/listTestingResultByPatient';
 import { GenTestingUpdate } from '../../modules/genTestingUpdate';
+import { GenTestingListByPatient } from '../../modules/genTestingListByPatient';
 
 export const routes = [
   {
@@ -106,7 +107,12 @@ export const routes = [
     exact: true,
   },
   {
-    path: '/patients/:id/testing_results/:testingResultId/update',
+    path: '/patients/:id/testing_results/:testingResultId/list',
+    component: GenTestingListByPatient,
+    exact: true,
+  },
+  {
+    path: '/patients/:id/testing_results/:testingResultId/update/:subTestingId',
     component: PatientTestingResultUpdate,
     exact: true,
   },
@@ -125,4 +131,5 @@ export const routes = [
     component: GenTestingUpdate,
     exact: true,
   },
+
 ];

@@ -2,7 +2,7 @@ import { Breadcrumb, Button, Form, Input, Space, Divider, Row, Col, notification
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { patientTestingResultUpdateAction, findOnePatientTestingResultAction } from './action';
+import { patientTestingResultUpdateAction, findOneGenTesting } from './action';
 import { useEffect } from 'react';
 
 const { Option } = Select;
@@ -10,21 +10,21 @@ const { Option } = Select;
 export const PatientTestingResultUpdate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const data = useSelector((state: any) => state.patientTestingResultUpdate.data);
+  const data = useSelector((state: any) => state.patientTestingResultUpdate.data);
   const isLoading = useSelector((state: any) => state.patientTestingResultUpdate.isLoading);
   const params: any = useParams()
-  const genTestingList = useSelector((state: any) => state.genTestingList.data);
-
-  const testingOptions = genTestingList?.map((e: any, index: number) => (
-    <Option key={index} value={e.name}>{e.name}</Option>
-  ));
+  const [form] = Form.useForm();
 
   useEffect(() => {
     onInit();
   }, []);
 
+  useEffect(() => {
+    form.setFieldsValue(data)
+  }, [data])
+
   const onInit = () => {
-    dispatch(findOnePatientTestingResultAction(params.testingResultId));
+    dispatch(findOneGenTesting(params.subTestingId));
   }
 
   const onFinish = (values: any) => {
@@ -59,18 +59,17 @@ export const PatientTestingResultUpdate = () => {
         </Breadcrumb.Item>
         <Breadcrumb.Item>Cập nhật kêt quả xet nghiệm</Breadcrumb.Item>
       </Breadcrumb>
-      <Form layout='vertical' name='dynamic_form_nest_item' onFinish={onFinish} autoComplete='off'>
+      <Form
+        layout='vertical'
+        name='dynamic_form_nest_item'
+        onFinish={onFinish}
+        form={form}
+      >
         <Form.Item
           name='name'
-          rules={[{ required: true, message: 'Vui lòng chọn xét nghiệm' }]}
+          rules={[{ required: true, message: 'Vui lòng nhập tên xét nghiệm' }]}
         >
-          <Select
-            showSearch
-            placeholder='Chọn xét nghiệm'
-            optionFilterProp='children'
-          >
-            {testingOptions}
-          </Select>
+          <Input placeholder='Nhập tên xet nghiệm' />
         </Form.Item>
         <Form.List name='results'>
           {(fields, { add, remove }) => (
